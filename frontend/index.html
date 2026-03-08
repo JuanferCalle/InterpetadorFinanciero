@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistente Financiero - Intérprete de Gastos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>💰 Asistente Financiero</h1>
+            <p class="subtitle">Gestiona tus gastos con voz e IA</p>
+        </header>
+
+        <!-- Status -->
+        <div class="status" id="status">
+            <span class="indicator" id="ollamaStatus"></span>
+            <span id="statusText">Conectando...</span>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sección de Entrada -->
+            <section class="section input-section">
+                <h2>📝 Registrar Transacción</h2>
+                
+                <div class="input-group">
+                    <textarea 
+                        id="inputText" 
+                        class="input-textarea" 
+                        placeholder="Ej: Gasté 50 mil pesos en comida el domingo"
+                        rows="3"></textarea>
+                    <div class="button-group">
+                        <button id="recordBtn" class="btn btn-secondary">🎤 Grabar</button>
+                        <button id="processBtn" class="btn btn-primary">Procesar</button>
+                        <button id="clearBtn" class="btn btn-secondary">Limpiar</button>
+                    </div>
+                    <p id="voiceStatus" class="subtitle" style="margin-top: 10px; font-size: 0.9rem; color: var(--text-secondary);">
+                        Voz: lista
+                    </p>
+                </div>
+
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="useAiCheckbox" checked>
+                        Usar IA para clasificación mejorada
+                    </label>
+                </div>
+            </section>
+
+            <!-- Resultados -->
+            <section class="section results-section" id="resultsSection" style="display: none;">
+                <h2>✅ Último Resultado</h2>
+                <div id="resultContent" class="result-content"></div>
+            </section>
+
+            <!-- Análisis -->
+            <section class="section analysis-section">
+                <h2>📊 Análisis</h2>
+                
+                <div class="period-selector">
+                    <label for="periodSelect">Período:</label>
+                    <select id="periodSelect" class="select-input">
+                        <option value="diario">Diario</option>
+                        <option value="semanal">Semanal</option>
+                        <option value="mensual" selected>Mensual</option>
+                        <option value="bimestral">Bimestral</option>
+                        <option value="semestral">Semestral</option>
+                        <option value="anual">Anual</option>
+                    </select>
+                    <button id="analyzeBtn" class="btn btn-primary">Analizar</button>
+                </div>
+
+                <div id="analysisContent" class="analysis-content"></div>
+            </section>
+
+            <!-- Sugerencias -->
+            <section class="section suggestions-section" id="suggestionsSection" style="display: none;">
+                <h2>💡 Sugerencias y Recomendaciones</h2>
+                <div id="suggestionsContent" class="suggestions-content"></div>
+            </section>
+
+            <!-- Transacciones -->
+            <section class="section transactions-section">
+                <h2>📋 Historial de Transacciones</h2>
+                <div class="transactions-filter">
+                    <label for="categoryFilter">Filtrar por categoría:</label>
+                    <select id="categoryFilter" class="select-input">
+                        <option value="">Todas las categorías</option>
+                        <option value="Comida">Comida</option>
+                        <option value="Ocio">Ocio</option>
+                        <option value="Gasolina/Transporte">Gasolina/Transporte</option>
+                        <option value="Gastos del hogar">Gastos del hogar</option>
+                        <option value="Ropa">Ropa</option>
+                        <option value="Viajes">Viajes</option>
+                        <option value="Servicios">Servicios</option>
+                        <option value="Salud">Salud</option>
+                        <option value="Educacion">Educación</option>
+                        <option value="Salario">Salario</option>
+                        <option value="Bonificacion">Bonificación</option>
+                        <option value="Freelance">Freelance</option>
+                    </select>
+                    <button id="clearDataBtn" class="btn btn-danger">🗑️ Borrar Todo</button>
+                </div>
+                <div id="transactionsContent" class="transactions-content">
+                    <p class="empty-state">No hay transacciones aún</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Intérprete Financiero © 2026 | Versión 1.0</p>
+        </footer>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="loading" id="loading" style="display: none;">
+        <div class="spinner"></div>
+        <p>Procesando...</p>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

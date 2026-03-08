@@ -1,0 +1,45 @@
+# .gitignore
+
+# Entorno virtual
+venv/
+env/
+ENV/
+*.venv
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+dist/
+build/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Base de datos local
+data/
+*.json
+!schemas/*.json
+
+# Logs
+*.log
+
+# Archivos temporales
+tmp/
+temp/
+*.tmp
+
+# Dependencias
+node_modules/
+
+# Variables de entorno
+.env
+.env.local
